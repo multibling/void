@@ -1,0 +1,47 @@
+
+#   █████╗ ██╗      █████╗  ██████╗██████╗ ██╗████████╗████████╗██╗   ██╗
+#  ██╔══██╗██║     ██╔══██╗██╔════╝██╔══██╗██║╚══██╔══╝╚══██╔══╝╚██╗ ██╔╝
+#  ███████║██║     ███████║██║     ██████╔╝██║   ██║      ██║    ╚████╔╝ 
+#  ██╔══██║██║     ██╔══██║██║     ██╔══██╗██║   ██║      ██║     ╚██╔╝  
+#  ██║  ██║███████╗██║  ██║╚██████╗██║  ██║██║   ██║      ██║      ██║   
+#  ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝   
+#
+
+import = ["~/.config/alacritty/rice-colors.toml"]
+
+[window]
+
+opacity = 0.8
+
+padding.x = 5
+padding.y = 5
+dynamic_padding = true
+
+decorations = "Full"
+decorations_theme_variant = "Dark"
+blur = true
+
+[font]
+
+normal.family = "Monofur Nerd Font Mono"
+bold.family = "Monofur Nerd Font Mono"
+italic.family = "Monofur Nerd Font Mono"
+bold_italic.family = "Monofur Nerd Font Mono"
+
+size = 10.0
+
+[scrolling]
+
+history = 10000
+multiplier = 5
+
+[cursor]
+
+blink_interval = 550
+unfocused_hollow = false
+thickness = 0.15
+
+[cursor.style]
+
+blinking = "On"
+shape = "Block"
