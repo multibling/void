@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Set environment variables
+export PATH="/usr/local/bin:$PATH"
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+export LESSHISTFILE=-
+export HISTFILE="$HOME/.config/bash/.bash_history"
+source ~/.config/bash/.bash_aliases
+source ~/.config/bash/.colors
+
+#------- If not running interactively, don't do anything ----------#
+[[ $- != *i* ]] && return
+
+#------------------ Customize shell prompt-------------------------#
+
+PS1="\[${bold}\]\n"         # newline
+PS1+="\[${green}\][ 󰃭 \d ]" # current date ww/mm/dd
+PS1+="\[${white}\]  "      # icon
+PS1+="\[${cyan}\]\u "       # username
+PS1+="\[${green}\][  \h ]" # host
+PS1+="\[${white}\]  "      # file icon
+PS1+="\[${white}\]{ \w }"   # working directory full path
+PS1+="\[${bold}\]\n"        # newline
+PS1+="\[${blue}\]󰜎  "
+PS1+="\[${reset}\]" # `$` (and reset color)
+export PS1
+
+PS2="\[${violet}\]  \[${reset}\]"
+export PS2
+
+#-------- Highlight the user name when logged in as root.-----------#
+if [[ "${USER}" == "root" ]]; then
+	userStyle="${red}"
+else
+	userStyle="${green}"
+fi
+
+##-------------------- SHELL OPTIONS ------------------------------##
+
+#------------------ auto cd --------#
+shopt -s autocd
+
+#---- Case-insensitive globbing (used in pathname expansion) -------#
+shopt -s nocaseglob
+
+#---- Append to the Bash history file, rather than overwriting it --#
+shopt -s histappend
+
+#-------- Autocorrect typos in path names when using `cd` ----------#
+shopt -s cdspell
+
+#------------------ Terminal rice ---- #
+pfetch
+
+#---------------- Pywal ---------------#
+# Import colorscheme from 'wal' asynchronously
+(cat ~/.cache/wal/sequences &)
+
+# Alternative (blocks terminal for 0-3ms)
+cat ~/.cache/wal/sequences
+
+# To add support for TTYs this line can be optionally added.
+source ~/.cache/wal/colors-tty.sh
+
+#--------------- Use bash-completion, if available -----------------#
+#
+#[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+#    . /usr/share/bash-completion/bash_completion
